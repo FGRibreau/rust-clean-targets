@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 320" width="860" height="320">
+  <defs>
+    <!-- Card header gradients -->
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="indigoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+
+    <!-- Animated flow gradients -->
+    <linearGradient id="flowAmberToIndigo" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.15"/>
+      <stop offset="45%" stop-color="#f59e0b" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#6366f1" stop-opacity="1"/>
+      <stop offset="55%" stop-color="#6366f1" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0.15"/>
+      <animateTransform attributeName="gradientTransform" type="translate" from="-1 0" to="1 0" dur="2.4s" repeatCount="indefinite"/>
+    </linearGradient>
+    <linearGradient id="flowIndigoToGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.15"/>
+      <stop offset="45%" stop-color="#6366f1" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#10b981" stop-opacity="1"/>
+      <stop offset="55%" stop-color="#10b981" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0.15"/>
+      <animateTransform attributeName="gradientTransform" type="translate" from="-1 0" to="1 0" dur="2.4s" repeatCount="indefinite" begin="0.6s"/>
+    </linearGradient>
+
+    <!-- Card shadow -->
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#64748b" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="430" y="38" text-anchor="middle"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+        font-size="13" font-weight="600" fill="#64748b" letter-spacing="1">
+    rust-clean-targets
+  </text>
+  <text x="430" y="58" text-anchor="middle"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+        font-size="11" fill="#94a3b8">
+    Strip Cargo cache, keep the binaries
+  </text>
+
+  <!-- ==================== CARD 1: Cluttered target/ ==================== -->
+  <g transform="translate(70, 90)" filter="url(#cardShadow)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+    <rect width="200" height="190" rx="16" fill="white"/>
+    <rect width="200" height="48" rx="16" fill="url(#amberGrad)"/>
+    <rect y="36" width="200" height="12" fill="url(#amberGrad)"/>
+
+    <!-- Folder icon -->
+    <g transform="translate(86, 14)">
+      <path d="M 0 4 L 0 20 L 28 20 L 28 6 L 14 6 L 11 2 L 0 2 Z"
+            fill="none" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+    </g>
+
+    <text x="100" y="74" text-anchor="middle" font-size="15" font-weight="700" fill="#1e293b">target/ before</text>
+    <text x="100" y="91" text-anchor="middle" font-size="10" fill="#64748b">cache + artifacts</text>
+
+    <!-- Listing -->
+    <g transform="translate(20, 105)" font-size="10" fill="#334155">
+      <rect width="160" height="74" rx="8" fill="#f8fafc"/>
+      <text x="14" y="18" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">deps/</text>
+      <text x="14" y="34" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">build/</text>
+      <text x="14" y="50" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">.fingerprint/</text>
+      <text x="14" y="66" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" fill="#10b981" font-weight="600">release/app</text>
+    </g>
+  </g>
+
+  <!-- Arrow 1 -->
+  <g>
+    <path d="M 275 185 L 325 185" stroke="#e2e8f0" stroke-width="2" fill="none"/>
+    <path d="M 275 185 L 325 185" stroke="url(#flowAmberToIndigo)" stroke-width="3" fill="none"/>
+    <path d="M 320 180 L 330 185 L 320 190" fill="none" stroke="#6366f1" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2.4s" repeatCount="indefinite"/>
+    </path>
+    <circle r="3" fill="#6366f1" opacity="0">
+      <animateMotion dur="2.4s" repeatCount="indefinite" path="M 275 185 L 325 185"/>
+      <animate attributeName="opacity" values="0;0.9;0.9;0" dur="2.4s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="2" fill="#6366f1" opacity="0">
+      <animateMotion dur="2.4s" repeatCount="indefinite" path="M 275 185 L 325 185" begin="0.8s"/>
+      <animate attributeName="opacity" values="0;0.7;0.7;0" dur="2.4s" repeatCount="indefinite" begin="0.8s"/>
+    </circle>
+  </g>
+
+  <!-- ==================== CARD 2: rust-clean-targets ==================== -->
+  <g transform="translate(330, 90)" filter="url(#cardShadow)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+    <rect width="200" height="190" rx="16" fill="white"/>
+    <rect width="200" height="48" rx="16" fill="url(#indigoGrad)"/>
+    <rect y="36" width="200" height="12" fill="url(#indigoGrad)"/>
+
+    <!-- Broom / sweep icon -->
+    <g transform="translate(86, 14)">
+      <path d="M 4 18 L 18 4" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 16 2 L 26 12 L 22 16 L 12 6 Z"
+            fill="white" fill-opacity="0.85" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M 2 20 L 8 14 M 5 22 L 10 17 M 7 23 L 12 18"
+            stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+    </g>
+
+    <text x="100" y="74" text-anchor="middle" font-size="15" font-weight="700" fill="#1e293b">rust-clean-targets</text>
+    <text x="100" y="91" text-anchor="middle" font-size="10" fill="#64748b">walk · detect · prune</text>
+
+    <!-- Pills -->
+    <g transform="translate(20, 110)" font-size="9">
+      <rect width="78" height="20" rx="10" fill="#6366f1" fill-opacity="0.1"/>
+      <text x="39" y="14" text-anchor="middle" fill="#4f46e5" font-weight="600">drop deps/</text>
+
+      <rect x="84" width="76" height="20" rx="10" fill="#6366f1" fill-opacity="0.1"/>
+      <text x="122" y="14" text-anchor="middle" fill="#4f46e5" font-weight="600">drop build/</text>
+
+      <rect y="28" width="78" height="20" rx="10" fill="#a855f7" fill-opacity="0.12"/>
+      <text x="39" y="42" text-anchor="middle" fill="#7c3aed" font-weight="600">drop .d files</text>
+
+      <rect x="84" y="28" width="76" height="20" rx="10" fill="#10b981" fill-opacity="0.12"/>
+      <text x="122" y="42" text-anchor="middle" fill="#059669" font-weight="600">keep binaries</text>
+    </g>
+
+    <!-- Footer info -->
+    <g transform="translate(20, 162)">
+      <rect width="160" height="20" rx="6" fill="#f1f5f9"/>
+      <text x="80" y="14" text-anchor="middle" font-size="9" fill="#475569" font-weight="500">--dry  ·  --verbose</text>
+    </g>
+  </g>
+
+  <!-- Arrow 2 -->
+  <g>
+    <path d="M 535 185 L 585 185" stroke="#e2e8f0" stroke-width="2" fill="none"/>
+    <path d="M 535 185 L 585 185" stroke="url(#flowIndigoToGreen)" stroke-width="3" fill="none"/>
+    <path d="M 580 180 L 590 185 L 580 190" fill="none" stroke="#10b981" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2.4s" repeatCount="indefinite" begin="0.6s"/>
+    </path>
+    <circle r="3" fill="#10b981" opacity="0">
+      <animateMotion dur="2.4s" repeatCount="indefinite" path="M 535 185 L 585 185" begin="0.6s"/>
+      <animate attributeName="opacity" values="0;0.9;0.9;0" dur="2.4s" repeatCount="indefinite" begin="0.6s"/>
+    </circle>
+    <circle r="2" fill="#10b981" opacity="0">
+      <animateMotion dur="2.4s" repeatCount="indefinite" path="M 535 185 L 585 185" begin="1.4s"/>
+      <animate attributeName="opacity" values="0;0.7;0.7;0" dur="2.4s" repeatCount="indefinite" begin="1.4s"/>
+    </circle>
+  </g>
+
+  <!-- ==================== CARD 3: Clean target/ ==================== -->
+  <g transform="translate(590, 90)" filter="url(#cardShadow)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+    <rect width="200" height="190" rx="16" fill="white"/>
+    <rect width="200" height="48" rx="16" fill="url(#greenGrad)"/>
+    <rect y="36" width="200" height="12" fill="url(#greenGrad)"/>
+
+    <!-- Check icon -->
+    <g transform="translate(88, 14)">
+      <circle cx="12" cy="10" r="11" fill="none" stroke="white" stroke-width="2"/>
+      <path d="M 6 10 L 11 15 L 18 6" fill="none" stroke="white" stroke-width="2.4"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+
+    <text x="100" y="74" text-anchor="middle" font-size="15" font-weight="700" fill="#1e293b">target/ after</text>
+    <text x="100" y="91" text-anchor="middle" font-size="10" fill="#64748b">binaries only</text>
+
+    <g transform="translate(20, 105)">
+      <rect width="160" height="36" rx="8" fill="#f8fafc"/>
+      <text x="14" y="22" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+            font-size="10" fill="#10b981" font-weight="700">release/app</text>
+    </g>
+
+    <g transform="translate(20, 150)">
+      <rect width="160" height="32" rx="8" fill="#10b981" fill-opacity="0.1"/>
+      <text x="80" y="14" text-anchor="middle" font-size="9" font-weight="700" fill="#059669">disk reclaimed</text>
+      <text x="80" y="26" text-anchor="middle" font-size="8" fill="#047857">cache pruned · binaries kept</text>
+    </g>
+  </g>
+</svg>
