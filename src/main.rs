@@ -24,8 +24,13 @@ fn print_usage(program: &str) {
                           Alias: --dry-run\n  \
          -v, --verbose    Print every path acted on (including files inside\n      \
                           cache subdirectories)\n  \
+         -V, --version    Show version and exit\n  \
          -h, --help       Show this help"
     );
+}
+
+fn print_version() {
+    println!("cargo-clean-targets {}", env!("CARGO_PKG_VERSION"));
 }
 
 fn parse_args() -> Result<Args, String> {
@@ -44,6 +49,10 @@ fn parse_args() -> Result<Args, String> {
         match arg.as_str() {
             "-h" | "--help" => {
                 print_usage(&program);
+                std::process::exit(0);
+            }
+            "-V" | "--version" => {
+                print_version();
                 std::process::exit(0);
             }
             "-n" | "--dry" | "--dry-run" => dry = true,
