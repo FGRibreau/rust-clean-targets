@@ -30,17 +30,17 @@ Useful when you have a `~/code` folder full of half-built Rust projects eating t
 
 ## Why I built this
 
-I had a hunch that Cargo's `target/` directories were quietly eating my Mac's disk. I'd been hunting disk hogs with a visualizer (DaisyDisk) for months — Docker volumes, `node_modules`, old Xcode runtimes — but Rust caches kept slipping past, scattered across years of side projects and easy to overlook one folder at a time.
+I had a hunch Cargo's `target/` directories were quietly eating my Mac's disk. I'd been chasing disk hogs with [dumap](https://github.com/jrobhoward/dumap) for a while — Docker volumes, `node_modules`, old Xcode runtimes were the obvious offenders, but Rust caches scattered across years of side projects were the ones I kept missing.
 
-So one weekend I wrote this tool to walk every `target/` on my machine, prune the cache, and keep the compiled binaries. The first run on my Mac printed:
+So on the morning of April 29, 2026, I sat down and wrote this. Walk every `target/` on the machine, prune the cache, keep the binaries. First run:
 
 ```
 done: 127 target dir(s), 4199 path(s) removed, 773.17 GiB freed
 ```
 
-**773 GiB.** From a single command, on one developer machine. `deps/`, `build/`, `incremental/`, and `.fingerprint/` accumulate much faster than I'd assumed — I'd vastly underestimated the damage.
+**773 GiB!** I had to re-read that line three times. Almost a full terabyte of dead weight on a single laptop! `deps/`, `build/`, `incremental/`, `.fingerprint/` had quietly piled up to nearly 700 GB across 127 target dirs without me ever noticing!
 
-If I'd built up that much without noticing, I'm pretty sure I'm not the only one. So I open-sourced it.
+If I had this much sitting on my disk, I can't be the only one. So I open-sourced it the same morning.
 
 — François-Guillaume Ribreau ([fgribreau.com](https://fgribreau.com))
 
