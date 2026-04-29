@@ -14,7 +14,7 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Rust](https://img.shields.io/badge/rust-2021-orange.svg)](https://www.rust-lang.org/)
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey.svg)](#)
-[![Release](https://github.com/FGRibreau/rust-clean-targets/actions/workflows/release.yml/badge.svg)](https://github.com/FGRibreau/rust-clean-targets/actions/workflows/release.yml)
+[![Release](https://github.com/FGRibreau/cargo-clean-targets/actions/workflows/release.yml/badge.svg)](https://github.com/FGRibreau/cargo-clean-targets/actions/workflows/release.yml)
 
 </div>
 
@@ -67,15 +67,15 @@ cargo binstall cargo-clean-targets
 
 ### Prebuilt binaries
 
-Grab a tarball/zip for your platform from [Releases](https://github.com/FGRibreau/rust-clean-targets/releases). Targets shipped:
+Grab a tarball/zip for your platform from [Releases](https://github.com/FGRibreau/cargo-clean-targets/releases). Targets shipped:
 
 `x86_64-unknown-linux-gnu`, `aarch64-unknown-linux-gnu`, `x86_64-unknown-linux-musl`, `aarch64-unknown-linux-musl`, `x86_64-apple-darwin`, `aarch64-apple-darwin`, `x86_64-pc-windows-msvc`, `aarch64-pc-windows-msvc`.
 
 ### From source
 
 ```bash
-git clone https://github.com/FGRibreau/rust-clean-targets.git
-cd rust-clean-targets
+git clone https://github.com/FGRibreau/cargo-clean-targets.git
+cd cargo-clean-targets
 cargo build --release
 ./target/release/cargo-clean-targets --dry ~/code
 ```
@@ -203,7 +203,7 @@ The Homebrew formula doesn't exist yet in the tap — `dawidd6/action-homebrew-b
 3. Generate the initial formula and push it to the tap:
    ```bash
    brew tap FGRibreau/tap
-   brew create https://github.com/FGRibreau/rust-clean-targets/archive/refs/tags/v0.1.0.tar.gz \
+   brew create https://github.com/FGRibreau/cargo-clean-targets/archive/refs/tags/v0.1.0.tar.gz \
      --tap FGRibreau/tap --set-name cargo-clean-targets
    # edit the generated Formula/cargo-clean-targets.rb, then commit + push
    ```
