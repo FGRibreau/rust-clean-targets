@@ -13,8 +13,9 @@ struct Args {
 
 fn print_usage(program: &str) {
     eprintln!(
-        "rust-clean-targets — strip Cargo target/ caches, keep compiled binaries\n\n\
+        "cargo-clean-targets — strip Cargo target/ caches, keep compiled binaries\n\n\
          Usage:\n  \
+         cargo clean-targets [OPTIONS] <PATH>\n  \
          {program} [OPTIONS] <PATH>\n\n\
          Options:\n  \
          -n, --dry            Show what would be deleted without deleting.\n      \
@@ -28,8 +29,13 @@ fn print_usage(program: &str) {
 }
 
 fn parse_args() -> Result<Args, String> {
-    let mut iter = env::args();
-    let program = iter.next().unwrap_or_else(|| "rust-clean-targets".into());
+    let mut iter = env::args().peekable();
+    let program = iter.next().unwrap_or_else(|| "cargo-clean-targets".into());
+    // When invoked via `cargo clean-targets ...`, Cargo passes the subcommand name
+    // ("clean-targets") as argv[1]. Skip it so the rest of the parser sees the real args.
+    if iter.peek().map(|s| s.as_str()) == Some("clean-targets") {
+        iter.next();
+    }
     let mut root: Option<PathBuf> = None;
     let mut dry = false;
     let mut verbose = false;
@@ -346,7 +352,7 @@ fn main() -> ExitCode {
                 hidden_hint,
             );
             println!(
-                "\nThanks for using rust-clean-targets!\n— François-Guillaume Ribreau ( https://fgribreau.com )"
+                "\nThanks for using cargo-clean-targets!\n— François-Guillaume Ribreau ( https://fgribreau.com )"
             );
             ExitCode::SUCCESS
         }

@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "rust-clean-targets"
+name = "cargo-clean-targets"
 version = "0.1.0"

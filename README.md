@@ -1,16 +1,16 @@
 <div align="center">
 
-# rust-clean-targets
+# cargo-clean-targets
 
 **Strip Cargo `target/` caches across a whole tree, keep only the compiled binaries.**
 
 <br/>
 
-<img src="assets/banner.svg" alt="rust-clean-targets — walk, detect, prune Cargo target directories" width="780"/>
+<img src="assets/banner.svg" alt="cargo-clean-targets — walk, detect, prune Cargo target directories" width="780"/>
 
 <br/>
 
-[![Crates.io](https://img.shields.io/crates/v/rust-clean-targets.svg)](https://crates.io/crates/rust-clean-targets)
+[![Crates.io](https://img.shields.io/crates/v/cargo-clean-targets.svg)](https://crates.io/crates/cargo-clean-targets)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Rust](https://img.shields.io/badge/rust-2021-orange.svg)](https://www.rust-lang.org/)
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey.svg)](#)
@@ -22,7 +22,7 @@
 
 ## What is this?
 
-A tiny CLI that walks a directory, finds every Cargo `target/` it can prove is one (`CACHEDIR.TAG` or `.rustc_info.json`), and removes the cache subtrees — `deps/`, `build/`, `incremental/`, `.fingerprint/`, `doc/`, dep-info `.d` files — while leaving the actually-compiled binaries (`release/app`, `debug/app`, examples, dylibs, rlibs, wasm) untouched.
+A tiny Cargo subcommand that walks a directory, finds every Cargo `target/` it can prove is one (`CACHEDIR.TAG` or `.rustc_info.json`), and removes the cache subtrees — `deps/`, `build/`, `incremental/`, `.fingerprint/`, `doc/`, dep-info `.d` files — while leaving the actually-compiled binaries (`release/app`, `debug/app`, examples, dylibs, rlibs, wasm) untouched.
 
 Useful when you have a `~/code` folder full of half-built Rust projects eating tens of GB and you don't want to nuke `target/` whole because you want yesterday's release build to still run.
 
@@ -34,29 +34,35 @@ Useful when you have a `~/code` folder full of half-built Rust projects eating t
 - **Dry mode** — `--dry` previews directories that would be removed before doing anything
 - **Verbose mode** — `--dry --verbose` lists every individual file too
 - **Reclaim report** — final summary shows target dirs touched, paths removed, bytes freed
-- **Single static binary** — no runtime, no config, no dependencies
+- **Cargo-native** — invokable as `cargo clean-targets` (single static binary, no runtime, no deps)
 
 ---
 
 ## Install
 
+### Cargo
+
+```bash
+cargo install cargo-clean-targets
+```
+
+Then use it as a Cargo subcommand:
+
+```bash
+cargo clean-targets ~/code
+```
+
 ### Homebrew (macOS / Linux)
 
 ```bash
 brew tap FGRibreau/tap
-brew install rust-clean-targets
-```
-
-### Cargo
-
-```bash
-cargo install rust-clean-targets
+brew install cargo-clean-targets
 ```
 
 ### `cargo binstall` (prebuilt binary, no compile)
 
 ```bash
-cargo binstall rust-clean-targets
+cargo binstall cargo-clean-targets
 ```
 
 ### Prebuilt binaries
@@ -71,7 +77,7 @@ Grab a tarball/zip for your platform from [Releases](https://github.com/FGRibrea
 git clone https://github.com/FGRibreau/rust-clean-targets.git
 cd rust-clean-targets
 cargo build --release
-./target/release/rust-clean-targets --dry ~/code
+./target/release/cargo-clean-targets --dry ~/code
 ```
 
 ---
@@ -80,10 +86,16 @@ cargo build --release
 
 ```bash
 # preview (recommended first run)
-rust-clean-targets --dry ~/code
+cargo clean-targets --dry ~/code
 
 # do it
-rust-clean-targets ~/code
+cargo clean-targets ~/code
+```
+
+You can also run the binary directly without going through Cargo:
+
+```bash
+cargo-clean-targets --dry ~/code
 ```
 
 ---
@@ -91,7 +103,8 @@ rust-clean-targets ~/code
 ## Usage
 
 ```
-rust-clean-targets [OPTIONS] <PATH>
+cargo clean-targets [OPTIONS] <PATH>
+cargo-clean-targets [OPTIONS] <PATH>
 ```
 
 ### Options
@@ -105,7 +118,7 @@ rust-clean-targets [OPTIONS] <PATH>
 ### Example
 
 ```bash
-$ rust-clean-targets --dry ~/code
+$ cargo clean-targets --dry ~/code
 target: /Users/me/code/myproj/target
   would rm dir  /Users/me/code/myproj/target/release/.fingerprint  (12.04 MiB)
   would rm dir  /Users/me/code/myproj/target/release/incremental   (48.21 MiB)
@@ -114,7 +127,7 @@ target: /Users/me/code/myproj/target
 
 done: 1 target dir(s), 5 path(s) removed, 677.82 MiB freed (dry) (+1 file(s) not shown — pass --verbose to list)
 
-Thanks for using rust-clean-targets!
+Thanks for using cargo-clean-targets!
 — François-Guillaume Ribreau ( https://fgribreau.com )
 ```
 
@@ -191,8 +204,8 @@ The Homebrew formula doesn't exist yet in the tap — `dawidd6/action-homebrew-b
    ```bash
    brew tap FGRibreau/tap
    brew create https://github.com/FGRibreau/rust-clean-targets/archive/refs/tags/v0.1.0.tar.gz \
-     --tap FGRibreau/tap --set-name rust-clean-targets
-   # edit the generated Formula/rust-clean-targets.rb, then commit + push
+     --tap FGRibreau/tap --set-name cargo-clean-targets
+   # edit the generated Formula/cargo-clean-targets.rb, then commit + push
    ```
 4. Subsequent releases will be bumped automatically by `homebrew-bump.yml`.
 

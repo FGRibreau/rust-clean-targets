@@ -15,7 +15,7 @@ jobs:
         with:
           token: ${{ secrets.HOMEBREW_TAP_TOKEN }}
           tap: FGRibreau/homebrew-tap
-          formula: rust-clean-targets
+          formula: cargo-clean-targets
           tag: ${{ github.event.release.tag_name }}
           revision: ${{ github.event.release.target_commitish }}
           force: false

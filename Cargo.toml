@@ -1,9 +1,9 @@
 [package]
-name = "rust-clean-targets"
+name = "cargo-clean-targets"
 version = "0.1.0"
 edition = "2021"
 rust-version = "1.74"
-description = "Strip Cargo target/ caches across a tree, keep only compiled binaries"
+description = "Cargo subcommand: strip target/ caches across a tree, keep only compiled binaries"
 authors = ["François-Guillaume Ribreau <fg@france-nuage.fr>"]
 license = "MIT"
 repository = "https://github.com/FGRibreau/rust-clean-targets"
@@ -15,7 +15,7 @@ categories = ["command-line-utilities", "development-tools::cargo-plugins"]
 exclude = [".github/*", "release-plz.toml"]
 
 [[bin]]
-name = "rust-clean-targets"
+name = "cargo-clean-targets"
 path = "src/main.rs"
 
 [profile.release]
