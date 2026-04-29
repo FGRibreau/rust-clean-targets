@@ -13,11 +13,9 @@ release_always = true
 publish_allow_dirty = false
 
 [changelog]
-header = """# Changelog\n
-All notable changes to this project will be documented in this file.\n
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).\n
-"""
+# Header lives in CHANGELOG.md directly; release-plz prepends new entries
+# below it, so we don't redeclare it here (re-declaring caused the header
+# to be duplicated on every release).
 body = """
 ## [{{ version }}]{% if release_link %}({{ release_link }}){% endif %} - {{ timestamp | date(format="%Y-%m-%d") }}
 {% for group, commits in commits | group_by(attribute="group") %}
