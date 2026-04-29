@@ -14,6 +14,7 @@ jobs:
     name: release-plz release
     runs-on: ubuntu-latest
     if: ${{ github.repository_owner == 'FGRibreau' }}
+    environment: release
     concurrency:
       group: release-plz-${{ github.ref }}
       cancel-in-progress: false
@@ -34,6 +35,7 @@ jobs:
     name: release-plz PR
     runs-on: ubuntu-latest
     if: ${{ github.repository_owner == 'FGRibreau' }}
+    environment: release
     concurrency:
       group: release-plz-pr-${{ github.ref }}
       cancel-in-progress: true

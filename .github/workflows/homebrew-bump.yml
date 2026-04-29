@@ -8,6 +8,7 @@ jobs:
   bump:
     name: bump tap formula
     runs-on: macos-latest
+    environment: release
     if: ${{ !github.event.release.prerelease && !github.event.release.draft }}
     steps:
       - uses: dawidd6/action-homebrew-bump-formula@v3

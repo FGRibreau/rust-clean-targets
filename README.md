@@ -164,12 +164,21 @@ Releases are fully automated via three GitHub Actions workflows:
 | `release.yml` | push of `v*` tag | [`taiki-e/upload-rust-binary-action`](https://github.com/taiki-e/upload-rust-binary-action) | Cross-compile 8 targets and upload tarballs/zips to the GitHub Release. |
 | `homebrew-bump.yml` | release published | [`dawidd6/action-homebrew-bump-formula`](https://github.com/dawidd6/action-homebrew-bump-formula) | Open a PR on [`FGRibreau/homebrew-tap`](https://github.com/FGRibreau/homebrew-tap) bumping the formula. |
 
-### Required GitHub secrets
+### Required GitHub Environment
+
+All publish secrets live in a GitHub Environment named **`release`** (Settings → Environments → New environment). The `release-plz` and `homebrew-bump` jobs reference it via `environment: release`. The matrix-build `release.yml` only uses `GITHUB_TOKEN` and needs no environment.
+
+Recommended protection rules on the `release` environment:
+
+- **Required reviewers**: yourself — every crates.io publish then waits for an approval click in the Actions UI
+- **Deployment branches and tags**: `main` + tag pattern `v*`
+
+### Required secrets (inside the `release` environment)
 
 | Secret | Used by | How to get it |
 |--------|---------|---------------|
 | `CARGO_REGISTRY_TOKEN` | release-plz | https://crates.io/settings/tokens — scope: `publish-new`, `publish-update` |
-| `RELEASE_PLZ_TOKEN` | release-plz | A GitHub PAT (classic) with `repo` scope, **not** the default `GITHUB_TOKEN` (so the tag push triggers `release.yml`). |
+| `RELEASE_PLZ_TOKEN` | release-plz | A GitHub PAT (classic) with `repo` scope, **not** the default `GITHUB_TOKEN` (so the tag push it creates triggers `release.yml`). |
 | `HOMEBREW_TAP_TOKEN` | homebrew-bump | A GitHub PAT (classic) with `public_repo` scope on `FGRibreau/homebrew-tap`. |
 
 ### First-time bootstrap
