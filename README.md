@@ -26,6 +26,26 @@ A tiny Cargo subcommand that walks a directory, finds every Cargo `target/` it c
 
 Useful when you have a `~/code` folder full of half-built Rust projects eating tens of GB and you don't want to nuke `target/` whole because you want yesterday's release build to still run.
 
+---
+
+## Why I built this
+
+I had a hunch that Cargo's `target/` directories were quietly eating my Mac's disk. I'd been hunting disk hogs with a visualizer (DaisyDisk) for months — Docker volumes, `node_modules`, old Xcode runtimes — but Rust caches kept slipping past, scattered across years of side projects and easy to overlook one folder at a time.
+
+So one weekend I wrote this tool to walk every `target/` on my machine, prune the cache, and keep the compiled binaries. The first run on my Mac printed:
+
+```
+done: 127 target dir(s), 4199 path(s) removed, 773.17 GiB freed
+```
+
+**773 GiB.** From a single command, on one developer machine. `deps/`, `build/`, `incremental/`, and `.fingerprint/` accumulate much faster than I'd assumed — I'd vastly underestimated the damage.
+
+If I'd built up that much without noticing, I'm pretty sure I'm not the only one. So I open-sourced it.
+
+— François-Guillaume Ribreau ([fgribreau.com](https://fgribreau.com))
+
+---
+
 ## Features
 
 - **Walks recursively** — point it at any folder, it finds every Cargo target inside
