@@ -149,10 +149,15 @@ Thanks for using cargo-clean-targets!
 | Inside `target/` | Action |
 |------|--------|
 | Profile dirs (`debug/`, `release/`, custom) | descended into |
+| Target-triple wrappers (`x86_64-unknown-linux-gnu/`, `aarch64-apple-darwin/`, …) | descended into, then each profile inside is cleaned |
 | `doc/`, `package/`, `tmp/`, `.rustdoc_fingerprint/` | removed |
+| `sqlx-tmp/` (from `cargo sqlx prepare`) | removed |
+| `cargo-timings/` (from `cargo build --timings`) | removed |
 | `CACHEDIR.TAG`, `.rustc_info.json` | kept |
 
 A directory is treated as a Cargo target only if it contains `CACHEDIR.TAG` or `.rustc_info.json`. A folder named `target/` that isn't actually one (e.g. some unrelated project's data dir) is left alone.
+
+Inside a target-triple wrapper (`target/<triple>/`), the same profile-cleaning logic applies — `target/<triple>/release/myapp` is kept, the surrounding `deps/`, `build/`, `incremental/`, `.fingerprint/` are removed.
 
 ---
 

@@ -264,6 +264,16 @@ fn clean_examples_dir(examples: &Path, args: &Args, stats: &mut Stats) -> io::Re
     Ok(())
 }
 
+/// A directory is "profile-like" if it has at least one of the canonical
+/// Cargo cache subdirs as immediate child. Used to discriminate a real
+/// profile dir (target/debug/) from a target-triple wrapper
+/// (target/x86_64-unknown-linux-gnu/) whose children are themselves profiles.
+fn is_profile_like_dir(dir: &Path) -> bool {
+    ["deps", "build", ".fingerprint", "incremental"]
+        .iter()
+        .any(|n| dir.join(n).is_dir())
+}
+
 fn clean_target_dir(target: &Path, args: &Args, stats: &mut Stats) -> io::Result<()> {
     println!("target: {}", target.display());
     stats.targets_seen += 1;
@@ -278,12 +288,25 @@ fn clean_target_dir(target: &Path, args: &Args, stats: &mut Stats) -> io::Result
         if file_type.is_dir() {
             match name.as_ref() {
                 // Always-cache directories at the top of target/. Prominent.
-                "doc" | "package" | "tmp" | ".rustdoc_fingerprint" => {
+                "doc" | "package" | "tmp" | ".rustdoc_fingerprint"
+                | "sqlx-tmp" | "cargo-timings" => {
                     remove_path(&path, true, args, stats)?;
                 }
-                // Profile dirs: debug, release, plus any custom profile.
                 _ => {
-                    clean_profile_dir(&path, args, stats)?;
+                    if is_profile_like_dir(&path) {
+                        // Real profile dir: target/debug, target/release, custom profile.
+                        clean_profile_dir(&path, args, stats)?;
+                    } else {
+                        // Possibly a target-triple wrapper (target/<triple>/).
+                        // Walk one level deeper and clean each profile-like child.
+                        for sub in fs::read_dir(&path)? {
+                            let sub = sub?;
+                            let sub_path = sub.path();
+                            if sub.file_type()?.is_dir() && is_profile_like_dir(&sub_path) {
+                                clean_profile_dir(&sub_path, args, stats)?;
+                            }
+                        }
+                    }
                 }
             }
         } else if file_type.is_file() {
