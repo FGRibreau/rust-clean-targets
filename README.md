@@ -24,33 +24,56 @@
 
 <table>
   <tr>
-    <td align="center" width="200">
-        <a href="https://getnatalia.com/">
-        <img src="assets/sponsors/natalia.svg" height="60" alt="Natalia"/><br/>
-        <b>Natalia</b>
-        </a><br/>
-        <sub>24/7 AI voice and whatsapp agent for customer services</sub>
-    </td>
-    <td align="center" width="200">
-      <a href="https://nobullshitconseil.com/">
-        <img src="assets/sponsors/nobullshitconseil.svg" height="60" alt="NoBullshitConseil"/><br/>
-        <b>NoBullshitConseil</b>
+    <td align="center" width="175">
+      <a href="https://france-nuage.fr/?mtm_source=github&mtm_medium=sponsor&mtm_campaign=france-nuage&mtm_content=rust-clean-targets">
+        <img src="assets/sponsors/france-nuage.svg" height="60" alt="France-Nuage"/><br/>
+        <b>France-Nuage</b>
       </a><br/>
-      <sub>360° tech consulting</sub>
+      <sub>Sovereign French cloud for your Rust CI runners. EU data residency.</sub>
     </td>
-    <td align="center" width="200">
-      <a href="https://www.hook0.com/">
+    <td align="center" width="175">
+      <a href="https://www.hook0.com/?mtm_source=github&mtm_medium=sponsor&mtm_campaign=hook0&mtm_content=rust-clean-targets">
         <img src="assets/sponsors/hook0.png" height="60" alt="Hook0"/><br/>
         <b>Hook0</b>
       </a><br/>
-      <sub>Open-Source Webhooks-as-a-Service</sub>
+      <sub>Add webhooks to your Rust services without writing delivery code.</sub>
     </td>
-    <td align="center" width="200">
-      <a href="https://france-nuage.fr/">
-        <img src="assets/sponsors/france-nuage.png" height="60" alt="France-Nuage"/><br/>
-        <b>France-Nuage</b>
+    <td align="center" width="175">
+      <a href="https://getnatalia.com/?mtm_source=github&mtm_medium=sponsor&mtm_campaign=natalia&mtm_content=rust-clean-targets">
+        <img src="assets/sponsors/natalia.svg" height="60" alt="Natalia"/><br/>
+        <b>Natalia</b>
       </a><br/>
-      <sub>Sovereign cloud hosting in France</sub>
+      <sub>Reclaim disk while AI reclaims your missed prospect calls 24/7.</sub>
+    </td>
+    <td align="center" width="175">
+      <a href="https://netir.fr/?mtm_source=github&mtm_medium=sponsor&mtm_campaign=netir&mtm_content=rust-clean-targets">
+        <img src="assets/sponsors/netir.svg" height="60" alt="NetIR"/><br/>
+        <b>NetIR</b>
+      </a><br/>
+      <sub>Hire vetted French freelance Rust devs via mentored marketplace.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="233">
+      <a href="https://nobullshitconseil.com/?mtm_source=github&mtm_medium=sponsor&mtm_campaign=nbc&mtm_content=rust-clean-targets">
+        <img src="assets/sponsors/nobullshitconseil.svg" height="60" alt="NoBullshitConseil"/><br/>
+        <b>NoBullshitConseil</b>
+      </a><br/>
+      <sub>No-bullshit tech advisory. Platform &amp; language strategy for CTOs.</sub>
+    </td>
+    <td align="center" width="233">
+      <a href="https://qualneo.fr/?mtm_source=github&mtm_medium=sponsor&mtm_campaign=qualneo&mtm_content=rust-clean-targets">
+        <img src="assets/sponsors/qualneo.svg" height="60" alt="Qualneo"/><br/>
+        <b>Qualneo</b>
+      </a><br/>
+      <sub>Qualiopi LMS for French training organisations. 32 indicators wired.</sub>
+    </td>
+    <td align="center" width="233">
+      <a href="https://recapro.ai/?mtm_source=github&mtm_medium=sponsor&mtm_campaign=recapro&mtm_content=rust-clean-targets">
+        <img src="assets/sponsors/recapro.png" height="60" alt="Recapro"/><br/>
+        <b>Recapro</b>
+      </a><br/>
+      <sub>Sovereign AI for engineering meeting notes. Transcribe &amp; summarise.</sub>
     </td>
   </tr>
 </table>
